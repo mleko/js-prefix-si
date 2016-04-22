@@ -10,7 +10,11 @@
     "Si",
     "Prefix"
   ],
-  "author": "",
+  "author": "mleko",
+  "repository":{
+      "url": "git@github.com:mleko/js-prefix-si.git",
+      "type": "git"
+  },
   "license": "ISC",
   "devDependencies": {
     "tap-spec": "^4.1.1",
