@@ -5,7 +5,7 @@
 ## Install
 
 ```bash
-$ npm install si-prefix
+$ npm install prefix-si
 ```
 
 ## Usage
