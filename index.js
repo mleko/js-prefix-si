@@ -1,4 +1,6 @@
-module.exports = prefix;
+if (typeof module !== 'undefined') {
+    module.exports = prefix;
+}
 
 // @todo add engineering notation 3k3, 1V4, 4p2, http://mathforum.org/library/drmath/view/64553.html
 function prefix(value, unit, options) {
