@@ -23,14 +23,14 @@ test('Bytes, binary', function(t){
     t.equal(prefix(5, "B", {binary: true}), "5B");
     t.equal(prefix(50, "B", {binary: true}), "50B");
 
-    t.equal(prefix(1024, "B", {binary: true}), "1kiB");
-    t.equal(prefix(1.5 * 1024, "B", {binary: true}), "1.5kiB");
+    t.equal(prefix(1024, "B", {binary: true}), "1KiB");
+    t.equal(prefix(1.5 * 1024, "B", {binary: true}), "1.5KiB");
     t.equal(prefix(1024*1024, "B", {binary: true}), "1MiB");
     t.equal(prefix(2*1024*1024, "B", {binary: true}), "2MiB");
-    
+
     t.equal(prefix(1000, "B", {binary: true}), "1000B");
-    t.equal(prefix(1.5 * 1000, "B", {binary: true}), "1.46kiB");
-    t.equal(prefix(1000*1000, "B", {binary: true}), "976.56kiB");
+    t.equal(prefix(1.5 * 1000, "B", {binary: true}), "1.46KiB");
+    t.equal(prefix(1000*1000, "B", {binary: true}), "976.56KiB");
     t.equal(prefix(2*1000*1000, "B", {binary: true}), "1.91MiB");
 
     t.end();

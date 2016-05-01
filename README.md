@@ -1,6 +1,6 @@
 ## prefix-si
 
-SI compatible number formatter
+SI, IEC compatible number formatter
 
 <a href="https://travis-ci.org/mleko/js-prefix-si"><img alt="Travis Status" src="https://travis-ci.org/mleko/js-prefix-si.svg?branch=master&label=travis&style=flat"></a>
 

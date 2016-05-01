@@ -17,20 +17,31 @@ function prefix(value, unit, options) {
         round: 2,
         spacer: ''
     };
-	options = merge(defaults, options || {});
-	var minPrefix = -8;
-	var prefixes = [
-		'y', 'z', 'a', 'f', 'p', 'n', 'μ', 'm', '', 'k', 'M', 'G', 'T', 'P', 'E', 'Z', 'Y'
-	];
+    var standards = {
+        si: {
+            minPrefix: -8,
+            prefixes: ['y', 'z', 'a', 'f', 'p', 'n', 'μ', 'm', '', 'k', 'M', 'G', 'T', 'P', 'E', 'Z', 'Y'],
+            base: 1000
+        },
+        iec: {
+            minPrefix: 0,
+            prefixes: ['', 'Ki', 'Mi', 'Gi', 'Ti', 'Pi', 'Ei', 'Zi', 'Yi'],
+            base: 1024
+        }
+    }
+
+    options = merge(defaults, options || {});
+    var standard = options.binary ? standards.iec : standards.si;
+
+	var minPrefix = standard.minPrefix;
+	var prefixes = standard.prefixes;
 	var maxPrefix = prefixes.length + minPrefix - 1;
-	var base = options.binary ? 1024 : 1000;
+	var base = standard.base;
 
 	var exponent = value ? Math.floor(Math.log(value) / Math.log(base)) : 0;
 	exponent = Math.min(maxPrefix, Math.max(minPrefix, exponent))
 
-	var prefixId = exponent - minPrefix;
-	var prefix = prefixes[prefixId] + (options.binary && exponent ? "i" : "");
-
+	var prefix = prefixes[exponent - minPrefix];
 	var prefixBase = Math.pow(base, exponent);
 
 	var val = value / prefixBase;
