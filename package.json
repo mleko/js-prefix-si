@@ -1,6 +1,6 @@
 {
   "name": "prefix-si",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "",
   "main": "dist/index.js",
   "typings": "dist/index",
@@ -9,6 +9,11 @@
     "test": "tsc && tape test/**/*.js",
     "prepublish": "npm test"
   },
+  "files": [
+      "index.ts",
+      "dist/index.js",
+      "dist/index.d.ts"
+  ],
   "keywords": [
     "Si",
     "Prefix"
