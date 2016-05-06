@@ -1,6 +1,6 @@
 var test = require('tape');
 
-var prefix = require('./../');
+var prefix = require('./../').prefix;
 
 test('unit-less value, defaults', function (t) {
     t.equal(prefix(5), '5');

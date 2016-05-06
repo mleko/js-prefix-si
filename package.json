@@ -1,23 +1,27 @@
 {
   "name": "prefix-si",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "typings": "dist/index",
   "scripts": {
-    "test": "tape test/**/*.js | tap-spec"
+    "compile": "tsc",
+    "test": "tsc && tape test/**/*.js",
+    "prepublish": "npm test"
   },
   "keywords": [
     "Si",
     "Prefix"
   ],
   "author": "mleko",
-  "repository":{
-      "url": "git@github.com:mleko/js-prefix-si.git",
-      "type": "git"
+  "repository": {
+    "url": "git@github.com:mleko/js-prefix-si.git",
+    "type": "git"
   },
   "license": "ISC",
   "devDependencies": {
-    "tap-spec": "^4.1.1",
-    "tape": "^4.5.1"
+    "tape": "^4.5.1",
+    "typescript": "~1.7.5",
+    "typings": "^0.8.1"
   }
 }
