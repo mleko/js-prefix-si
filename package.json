@@ -11,9 +11,9 @@
   "main": "index.js",
   "typings": "index",
   "scripts": {
-    "compile": "tsc",
+    "compile": "tsc -d",
     "test": "ts-node node_modules/tape/bin/tape test/**/*.ts",
-    "prepublish": "npm test",
+    "prepublish": "npm test && tsc -d",
     "postpublish": "rm ./index.{js,d.ts}"
   },
   "dependencies": {
