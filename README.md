@@ -21,3 +21,8 @@ prefix(1024*1024, "B", {binary: true})
 prefix(1200, "g")
 // => "1.2kg"
 ```
+
+
+_Todo_
+
+- @todo add engineering notation 3k3, 1V4, 4p2, http://mathforum.org/library/drmath/view/64553.html, BS 1852
