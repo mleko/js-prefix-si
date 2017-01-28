@@ -1,18 +1,8 @@
-export function prefix(value: number, unit?: string, options?: any): string {
-	let merge = function (a, b) {
-		let m = {};
-		for (let key in a) {
-			if (a.hasOwnProperty(key)) m[key] = a[key];
-		}
-		for (let key in b) {
-			if (b.hasOwnProperty(key)) m[key] = b[key];
-		}
-		return m;
-	};
-	let defaults = {
+import {merge} from "typescript-object-utils";
+
+export function prefix(value: number, unit?: string, options?: PrefixOptions): string {
+	let defaults: PrefixOptions = {
 		binary: false,
-		fixed: undefined,
-		precision: undefined,
 		round: 2,
 		spacer: ""
 	};
@@ -54,4 +44,12 @@ export function prefix(value: number, unit?: string, options?: any): string {
 		valString = String(Math.round(val * roundPow) / roundPow);
 	}
 	return valString + options.spacer + prefix + (unit ? unit : "");
+}
+
+export interface PrefixOptions {
+	binary?: boolean;
+	fixed?: number;
+	precision?: number;
+	round?: number;
+	spacer?: string;
 }
