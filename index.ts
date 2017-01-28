@@ -1,5 +1,5 @@
 // @todo add engineering notation 3k3, 1V4, 4p2, http://mathforum.org/library/drmath/view/64553.html, BS 1852
-export function prefix(value: number, unit: string, options): string {
+export function prefix(value: number, unit?: string, options?: any): string {
 	let merge = function (a, b) {
 		let m = {};
 		for (let key in a) {
