@@ -10,9 +10,9 @@
     "prepublish": "npm test"
   },
   "files": [
-      "index.ts",
-      "dist/index.js",
-      "dist/index.d.ts"
+    "index.ts",
+    "dist/index.js",
+    "dist/index.d.ts"
   ],
   "keywords": [
     "Si",
@@ -26,7 +26,7 @@
   "license": "ISC",
   "devDependencies": {
     "tape": "^4.5.1",
-    "typescript": "~1.7.5",
-    "typings": "^0.8.1"
+    "tslint": "^4.4.2",
+    "typescript": "^2.0.0"
   }
 }
