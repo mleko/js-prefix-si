@@ -27,7 +27,8 @@ export function prefix(value: number, unit?: string, options?: PrefixOptions): s
 	let maxPrefix = prefixes.length + minPrefix - 1;
 	let base = standard.base;
 
-	let exponent = value ? Math.floor(Math.log(value) / Math.log(base)) : 0;
+	let absValue = Math.abs(value);
+	let exponent = absValue ? Math.floor(Math.log(absValue) / Math.log(base)) : 0;
 	exponent = Math.min(maxPrefix, Math.max(minPrefix, exponent));
 
 	let prefix = prefixes[exponent - minPrefix];
