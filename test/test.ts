@@ -84,3 +84,22 @@ test("Decimal mark", (t) => {
 
 	t.end();
 });
+
+test("BS1852 style", (t) => {
+	t.equals(prefix(1, "R", {bs1852: true}), "1R0");
+	t.equals(prefix(8, "R", {bs1852: true}), "8R0");
+	t.equals(prefix(220, "R", {bs1852: true}), "220R");
+
+	t.equals(prefix(0.47, "R", {bs1852: true}), "R47");
+	t.equals(prefix(4.7, "R", {bs1852: true}), "4R7");
+	t.equals(prefix(470, "R", {bs1852: true}), "470R");
+	t.equals(prefix(4700, "R", {bs1852: true}), "4K7");
+	t.equals(prefix(47000, "R", {bs1852: true}), "47K");
+	t.equals(prefix(470000, "R", {bs1852: true}), "470K");
+	t.equals(prefix(4700000, "R", {bs1852: true}), "4M7");
+
+	t.equals(prefix(22e-12, "F", {bs1852: true}), "22p");
+	t.equals(prefix(1e-8, "F", {bs1852: true}), "10n");
+
+	t.end();
+});

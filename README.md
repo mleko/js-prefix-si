@@ -1,6 +1,6 @@
 ## prefix-si
 
-SI, IEC compatible number formatter
+SI, IEC, BS1852 compatible number formatter
 
 <a href="https://travis-ci.org/mleko/js-prefix-si"><img alt="Travis Status" src="https://travis-ci.org/mleko/js-prefix-si.svg?branch=master&label=travis&style=flat"></a>
 
@@ -20,9 +20,7 @@ prefix(1024*1024, "B", {binary: true})
 
 prefix(1200, "g")
 // => "1.2kg"
+
+prefix(4700, "R", {bs1852: true})
+// => "4K7"
 ```
-
-
-_Todo_
-
-- @todo add engineering notation 3k3, 1V4, 4p2, http://mathforum.org/library/drmath/view/64553.html, BS 1852

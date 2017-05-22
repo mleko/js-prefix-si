@@ -10,6 +10,16 @@ const standards = {
 		minPrefix: 0,
 		prefixes: ["", "Ki", "Mi", "Gi", "Ti", "Pi", "Ei", "Zi", "Yi"],
 		base: 1024
+	},
+	bs1852_R: {
+		minPrefix: 0,
+		prefixes: ["R", "K", "M", "G", "T"],
+		base: 1000
+	},
+	bs1852_F: {
+		minPrefix: -4,
+		prefixes: ["p", "n", "μ", "m", "F"],
+		base: 1000
 	}
 };
 
@@ -23,7 +33,18 @@ const defaults: PrefixOptions = {
 export function prefix(value: number, unit?: string, options?: PrefixOptions): string {
 
 	options = merge(defaults, options || {});
-	let standard = options.binary ? standards.iec : standards.si;
+	let standard;
+	if (options.bs1852) {
+		if (unit === "R") {
+			standard = standards.bs1852_R;
+		} else if (unit === "F") {
+			standard = standards.bs1852_F;
+		} else {
+			standard = standards.si;
+		}
+	} else {
+		standard = options.binary ? standards.iec : standards.si;
+	}
 
 	let minPrefix = standard.minPrefix;
 	let prefixes = standard.prefixes;
@@ -39,6 +60,9 @@ export function prefix(value: number, unit?: string, options?: PrefixOptions): s
 
 	let val = value / prefixBase;
 	let valString = String(val);
+
+	unit = unit ? unit : "";
+
 	if (options.fixed) {
 		valString = val.toFixed(options.fixed);
 	} else if (options.precision) {
@@ -46,6 +70,14 @@ export function prefix(value: number, unit?: string, options?: PrefixOptions): s
 	} else {
 		let roundPow = Math.pow(10, +options.round);
 		valString = String(Math.round(val * roundPow) / roundPow);
+	}
+	if (options.bs1852) {
+		const parts = valString.split(".");
+		if (parts.length == 2) {
+			return (parts[0] == "0" ? "" : parts[0]) + (prefix ? prefix : (unit ? unit : options.decimalMark)) + (parts[1]);
+		} else {
+			return valString + (prefix ? prefix : unit) + (valString.length == 1 ? "0" : "");
+		}
 	}
 	return valString.replace(".", options.decimalMark) + options.spacer + prefix + unit;
 }
@@ -57,4 +89,5 @@ export interface PrefixOptions {
 	round?: number;
 	spacer?: string;
 	decimalMark?: string;
+	bs1852?: boolean;
 }
