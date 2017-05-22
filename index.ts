@@ -1,23 +1,26 @@
 import {merge} from "typescript-object-utils";
 
+const standards = {
+	si: {
+		minPrefix: -8,
+		prefixes: ["y", "z", "a", "f", "p", "n", "μ", "m", "", "k", "M", "G", "T", "P", "E", "Z", "Y"],
+		base: 1000
+	},
+	iec: {
+		minPrefix: 0,
+		prefixes: ["", "Ki", "Mi", "Gi", "Ti", "Pi", "Ei", "Zi", "Yi"],
+		base: 1024
+	}
+};
+
+const defaults: PrefixOptions = {
+	binary: false,
+	round: 2,
+	spacer: "",
+	decimalMark: "."
+};
+
 export function prefix(value: number, unit?: string, options?: PrefixOptions): string {
-	let defaults: PrefixOptions = {
-		binary: false,
-		round: 2,
-		spacer: ""
-	};
-	let standards = {
-		si: {
-			minPrefix: -8,
-			prefixes: ["y", "z", "a", "f", "p", "n", "μ", "m", "", "k", "M", "G", "T", "P", "E", "Z", "Y"],
-			base: 1000
-		},
-		iec: {
-			minPrefix: 0,
-			prefixes: ["", "Ki", "Mi", "Gi", "Ti", "Pi", "Ei", "Zi", "Yi"],
-			base: 1024
-		}
-	};
 
 	options = merge(defaults, options || {});
 	let standard = options.binary ? standards.iec : standards.si;
@@ -44,7 +47,7 @@ export function prefix(value: number, unit?: string, options?: PrefixOptions): s
 		let roundPow = Math.pow(10, +options.round);
 		valString = String(Math.round(val * roundPow) / roundPow);
 	}
-	return valString + options.spacer + prefix + (unit ? unit : "");
+	return valString.replace(".", options.decimalMark) + options.spacer + prefix + unit;
 }
 
 export interface PrefixOptions {
@@ -53,4 +56,5 @@ export interface PrefixOptions {
 	precision?: number;
 	round?: number;
 	spacer?: string;
+	decimalMark?: string;
 }

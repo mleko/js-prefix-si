@@ -76,3 +76,11 @@ test("Fixed", (t) => {
 
 	t.end();
 });
+
+test("Decimal mark", (t) => {
+	t.equal(prefix(1, "g", {decimalMark: ","}), "1g");
+	t.equal(prefix(1000, "g", {decimalMark: ","}), "1kg");
+	t.equal(prefix(1200, "g", {decimalMark: ","}), "1,2kg");
+
+	t.end();
+});
