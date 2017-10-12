@@ -1,6 +1,6 @@
 {
   "name": "prefix-si",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "SI, IEC, BS1852 compatible number formatter",
   "keywords": [
     "Si",
@@ -27,7 +27,7 @@
     "tape": "^4.5.1",
     "ts-node": "^2.0.0",
     "tslint": "^4.4.2",
-    "typescript": "^2.0.0"
+    "typescript": "~2.3.0"
   },
   "files": [
     "index.ts",
